@@ -27,7 +27,7 @@ declare global {
     blue(bright?: boolean): string,
     magenta(bright?: boolean): string,
     cyan(bright?: boolean): string,
-    white(bright?: boolean): string
+    white(bright?: boolean): string,
 
     bgBlack(): string,
     bgGray(): string,
@@ -39,6 +39,9 @@ declare global {
     bgMagenta(bright?: boolean): string,
     bgCyan(bright?: boolean): string,
     bgWhite(bright?: boolean): string
+
+    randomColor(): string,
+    randomBackground(): string
   }
 }
 
@@ -185,3 +188,18 @@ String.prototype.bgWhite = function(bright: boolean = false) {
   return this.background(`${bright ? "bright_" : ""}white`);
 }
 
+/** Utils **/
+
+String.prototype.randomColor = function() {
+  const colors = Object.keys(STYLES_FORE);
+  const randomIndex = (Math.floor(Math.random() * colors.length));
+
+  return this.color(colors[randomIndex]);
+}
+
+String.prototype.randomBackground = function() {
+  const colors = Object.keys(STYLES_BACK);
+  const randomIndex = (Math.floor(Math.random() * colors.length));
+
+  return this.background(colors[randomIndex]);
+}
