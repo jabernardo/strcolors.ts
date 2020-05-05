@@ -19,15 +19,26 @@ declare global {
     strike(): string,
 
     black(): string,
-    red(): string,
-    green(): string,
-    yellow(): string,
-    blue(): string,
-    magenta(): string,
-    cyan(): string,
-    white(): string,
     gray(): string,
-    grey(): string
+    grey(): string,
+    red(bright?: boolean): string,
+    green(bright?: boolean): string,
+    yellow(bright?: boolean): string,
+    blue(bright?: boolean): string,
+    magenta(bright?: boolean): string,
+    cyan(bright?: boolean): string,
+    white(bright?: boolean): string
+
+    bgBlack(): string,
+    bgGray(): string,
+    bgGrey(): string,
+    bgRed(bright?: boolean): string,
+    bgGreen(bright?: boolean): string,
+    bgYellow(bright?: boolean): string,
+    bgBlue(bright?: boolean): string,
+    bgMagenta(bright?: boolean): string,
+    bgCyan(bright?: boolean): string,
+    bgWhite(bright?: boolean): string
   }
 }
 
@@ -44,21 +55,21 @@ String.prototype.vt100 = function(open: number, close: number): string {
 }
 
 String.prototype.color = function(colorName: string): string {
-  const color = STYLES_FORE[colorName] || STYLES_ATTR["reset"];
+  const color = STYLES_FORE[colorName.toLowerCase()] || STYLES_ATTR["reset"];
   const [ open, close ] = color;
 
   return this.vt100(open, close);
 }
 
 String.prototype.background = function(colorName: string): string {
-  let color = STYLES_BACK[colorName] || STYLES_ATTR["reset"];
+  let color = STYLES_BACK[colorName.toLowerCase()] || STYLES_ATTR["reset"];
   const [ open, close ] = color;
 
   return this.vt100(open, close);
 }
 
 String.prototype.style = function(colorName: string): string {
-  let color = STYLES_ATTR[colorName] || STYLES_ATTR["reset"];
+  let color = STYLES_ATTR[colorName.toLowerCase()] || STYLES_ATTR["reset"];
   const [ open, close ] = color;
 
   return this.vt100(open, close);
@@ -104,34 +115,73 @@ String.prototype.black = function() {
   return this.color("black");
 }
 
-String.prototype.red = function() {
-  return this.color("red");
-}
-
-String.prototype.green = function() {
-  return this.color("green");
-}
-
-String.prototype.yellow = function() {
-  return this.color("yellow");
-}
-
-String.prototype.blue = function() {
-  return this.color("blue");
-}
-
-String.prototype.magenta = function() {
-  return this.color("magenta");
-}
-
-String.prototype.cyan = function() {
-  return this.color("cyan");
-}
-
-String.prototype.white = function() {
-  return this.color("white");
-}
-
 String.prototype.gray = String.prototype.grey = function() {
   return this.color("gray");
 }
+
+String.prototype.red = function(bright: boolean = false) {
+  return this.color(`${bright ? "bright_" : ""}red`);
+}
+
+String.prototype.green = function(bright: boolean = false) {
+  return this.color(`${bright ? "bright_" : ""}green`);
+}
+
+String.prototype.yellow = function(bright: boolean = false) {
+  return this.color(`${bright ? "bright_" : ""}yellow`);
+}
+
+String.prototype.blue = function(bright: boolean = false) {
+  return this.color(`${bright ? "bright_" : ""}blue`);
+}
+
+String.prototype.magenta = function(bright: boolean = false) {
+  return this.color(`${bright ? "bright_" : ""}magenta`);
+}
+
+String.prototype.cyan = function(bright: boolean = false) {
+  return this.color(`${bright ? "bright_" : ""}cyan`);
+}
+
+String.prototype.white = function(bright: boolean = false) {
+  return this.color(`${bright ? "bright_" : ""}white`);
+}
+
+/** Background Colors **/
+
+String.prototype.bgBlack = function() {
+  return this.background("black");
+}
+
+String.prototype.bgGray = String.prototype.bgGrey = function() {
+  return this.background("gray");
+}
+
+String.prototype.bgRed = function(bright: boolean = false) {
+  return this.background(`${bright ? "bright_" : ""}red`);
+}
+
+String.prototype.bgGreen = function(bright: boolean = false) {
+  return this.background(`${bright ? "bright_" : ""}green`);
+}
+
+String.prototype.bgYellow = function(bright: boolean = false) {
+  return this.background(`${bright ? "bright_" : ""}yellow`);
+}
+
+String.prototype.bgBlue = function(bright: boolean = false) {
+  return this.background(`${bright ? "bright_" : ""}blue`);
+}
+
+String.prototype.bgMagenta = function(bright: boolean = false) {
+  return this.background(`${bright ? "bright_" : ""}magenta`);
+}
+
+String.prototype.bgCyan = function(bright: boolean = false) {
+  return this.background(`${bright ? "bright_" : ""}cyan`);
+}
+
+String.prototype.bgWhite = function(bright: boolean = false) {
+  return this.background(`${bright ? "bright_" : ""}white`);
+}
+

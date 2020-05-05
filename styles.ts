@@ -26,13 +26,13 @@ export const STYLES_FORE: Styles = {
   gray: [90, 39],
   grey: [90, 39],
 
-  brightRed: [91, 39],
-  brightGreen: [92, 39],
-  brightYellow: [93, 39],
-  brightBlue: [94, 39],
-  brightMagenta: [95, 39],
-  brightCyan: [96, 39],
-  brightWhite: [97, 39]
+  bright_red: [91, 39],
+  bright_green: [92, 39],
+  bright_yellow: [93, 39],
+  bright_blue: [94, 39],
+  bright_magenta: [95, 39],
+  bright_cyan: [96, 39],
+  bright_white: [97, 39]
 };
 
 export const STYLES_BACK: Styles = {
@@ -47,11 +47,11 @@ export const STYLES_BACK: Styles = {
   gray: [100, 49],
   grey: [100, 49],
 
-  brightRed: [101, 49],
-  brightGreen: [102, 49],
-  brightYellow: [103, 49],
-  brightBlue: [104, 49],
-  brightMagenta: [105, 49],
-  brightCyan: [106, 49],
-  brightWhite: [107, 49]
+  bright_red: [101, 49],
+  bright_green: [102, 49],
+  bright_yellow: [103, 49],
+  bright_blue: [104, 49],
+  bright_magenta: [105, 49],
+  bright_cyan: [106, 49],
+  bright_white: [107, 49]
 };
