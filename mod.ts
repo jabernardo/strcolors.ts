@@ -4,43 +4,297 @@ const { noColor } = Deno;
 
 declare global {
   interface String {
+    /**
+     * strcolors.ts: Apply Styles for String
+     *
+     * @param   {number}  open  - Opening code
+     * @param   {number}  close - Closing code
+     * @return  {string}  Styled String
+     */
     vt100(open: number, close: number): string,
-    color(colorName: string): string,
-    background(colorName: string): string,
-    style(colorName: string): string,
 
+    /**
+     * strcolors.ts: Change string color
+     *
+     * @param   {string}  colorName  - Color name
+     * @return  {string}  Styled String
+     *
+     */
+    color(colorName: string): string,
+
+    /**
+     * strcolors.ts: Change string color background
+     *
+     * @param   {string}  colorName  - Color name
+     * @return  {string}  Styled String
+     *
+     */
+    background(colorName: string): string,
+
+    /**
+     * strcolors.ts: Change string style
+     *
+     * @param   {string}  format  - Color name
+     * @return  {string}  Styled String
+     *
+     */
+    style(format: string): string,
+
+    /**
+     * strcolors.ts:  Reset string style
+     *
+     * @return {string} Styled String
+     *
+     */
     reset(): string,
+
+    /**
+     * strcolors.ts: Bold String
+     *
+     * @return {string} Styled String
+     *
+     */
     bold(): string,
+
+
+    /**
+     * strcolors.ts:  Dim string style
+     *
+     * @return {string} Styled String
+     *
+     */
     dim(): string,
+
+    /**
+     * strcolors.ts:  Italic string style
+     *
+     * @return {string} Styled String
+     *
+     */
     italic(): string,
+
+    /**
+     * strcolors.ts:  Underline string style
+     *
+     * @return {string} Styled String
+     *
+     */
     underline(): string,
+
+    /**
+     * strcolors.ts:  Inverse string style
+     *
+     * @return {string} Styled String
+     *
+     */
     inverse(): string,
+
+    /**
+     * strcolors.ts:  Hidden string style
+     *
+     * @return {string} Styled String
+     *
+     */
     hidden(): string,
+
+    /**
+     * strcolors.ts:  Stikethrough string style
+     *
+     * @return {string} Styled String
+     *
+     */
     strike(): string,
 
+    /**
+     * strcolors.ts: Change color of string to black
+     *
+     * @return {string} Styled String
+     *
+     */
     black(): string,
+
+    /**
+     * strcolors.ts: Change color of string to gray
+     *
+     * @return {string} Styled String
+     *
+     */
     gray(): string,
+
+    /**
+     * strcolors.ts: Change color of string to grey
+     *
+     * @return {string} Styled String
+     *
+     */
     grey(): string,
+
+    /**
+     * strcolors.ts: Change color of string to red
+     *
+     * @param  {boolean}  [bright] - Use bright color (default: false)
+     * @return {string}   Styled String
+     *
+     */
     red(bright?: boolean): string,
+
+    /**
+     * strcolors.ts: Change color of string to green
+     *
+     * @param  {boolean}  [bright] - Use bright color (default: false)
+     * @return {string}   Styled String
+     *
+     */
     green(bright?: boolean): string,
+
+    /**
+     * strcolors.ts: Change color of string to yellow
+     *
+     * @param  {boolean}  [bright] - Use bright color (default: false)
+     * @return {string}   Styled String
+     *
+     */
     yellow(bright?: boolean): string,
+
+    /**
+     * strcolors.ts: Change color of string to blue
+     *
+     * @param  {boolean}  [bright] - Use bright color (default: false)
+     * @return {string}   Styled String
+     *
+     */
     blue(bright?: boolean): string,
+
+    /**
+     * strcolors.ts: Change color of string to magenta
+     *
+     * @param  {boolean}  [bright] - Use bright color (default: false)
+     * @return {string}   Styled String
+     *
+     */
     magenta(bright?: boolean): string,
+
+    /**
+     * strcolors.ts: Change color of string to cyan
+     *
+     * @param  {boolean}  [bright] - Use bright color (default: false)
+     * @return {string}   Styled String
+     *
+     */
     cyan(bright?: boolean): string,
+
+    /**
+     * strcolors.ts: Change color of string to white
+     *
+     * @param  {boolean}  [bright] - Use bright color (default: false)
+     * @return {string}   Styled String
+     *
+     */
     white(bright?: boolean): string,
 
+    /**
+     * strcolors.ts: Change background color of string to black
+     *
+     * @return {string}   Styled String
+     *
+     */
     bgBlack(): string,
+
+    /**
+     * strcolors.ts: Change background color of string to gray
+     *
+     * @return {string}   Styled String
+     *
+     */
     bgGray(): string,
+
+    /**
+     * strcolors.ts: Change background color of string to grey
+     *
+     * @param  {boolean}  [bright] - Use bright color (default: false)
+     * @return {string}   Styled String
+     *
+     */
     bgGrey(): string,
+
+    /**
+     * strcolors.ts: Change background color of string to red
+     *
+     * @param  {boolean}  [bright] - Use bright color (default: false)
+     * @return {string}   Styled String
+     *
+     */
     bgRed(bright?: boolean): string,
+
+    /**
+     * strcolors.ts: Change background color of string to green
+     *
+     * @param  {boolean}  [bright] - Use bright color (default: false)
+     * @return {string}   Styled String
+     *
+     */
     bgGreen(bright?: boolean): string,
+
+    /**
+     * strcolors.ts: Change background color of string to yellow
+     *
+     * @param  {boolean}  [bright] - Use bright color (default: false)
+     * @return {string}   Styled String
+     *
+     */
     bgYellow(bright?: boolean): string,
+
+    /**
+     * strcolors.ts: Change background color of string to blue
+     *
+     * @param  {boolean}  [bright] - Use bright color (default: false)
+     * @return {string}   Styled String
+     *
+     */
     bgBlue(bright?: boolean): string,
+
+    /**
+     * strcolors.ts: Change background color of string to magenta
+     *
+     * @param  {boolean}  [bright] - Use bright color (default: false)
+     * @return {string}   Styled String
+     *
+     */
     bgMagenta(bright?: boolean): string,
+
+    /**
+     * strcolors.ts: Change background color of string to cyan
+     *
+     * @param  {boolean}  [bright] - Use bright color (default: false)
+     * @return {string}   Styled String
+     *
+     */
     bgCyan(bright?: boolean): string,
+
+    /**
+     * strcolors.ts: Change background color of string to white
+     *
+     * @param  {boolean}  [bright] - Use bright color (default: false)
+     * @return {string}   Styled String
+     *
+     */
     bgWhite(bright?: boolean): string
 
+
+    /**
+     * strcolors.ts: Change color of string to any random color
+     *
+     * @return {string}   Styled String
+     *
+     */
     randomColor(): string,
+
+    /**
+     * strcolors.ts: Change background color of string to any random color
+     *
+     * @return {string}   Styled String
+     *
+     */
     randomBackground(): string
   }
 }
